@@ -35,3 +35,16 @@ cp "$ModName/obj/Debug/$ModName.dll" "$ModDir"
 cp README.md "$ModDir"
 cp manifest.json "$ModDir"
 cp icon.png "$ModDir"
+
+cd "$ModDir" || exit
+
+[ -f "$ModName.zip" ] && rm "$ModName.zip"
+[ -f "$ModName-Nexus.zip" ] && rm "$ModName-Nexus.zip"
+
+mkdir -p plugins
+cp "$ModName.dll" plugins
+
+zip "$ModName.zip" "$ModName.dll" README.md manifest.json icon.png
+zip -r "$ModName-Nexus.zip" plugins
+
+rm -r plugins
