@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Logger = Jotunn.Logger;
 
 namespace Pacifist.Logic {
     public static class EffectHandler {

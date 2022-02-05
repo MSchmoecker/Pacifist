@@ -13,7 +13,7 @@ I have no problem with blood and gore, but want to make the game accessible for 
 Please contact me if something is still present.
 
 ## Installation
-This mod requires BepInEx and Jötunn.\
+This mod requires BepInEx.\
 Extract the content of `Pacifist` into the `BepInEx/plugins` folder.
 
 You can edit the config at `BepInEx/config/com.maxsch.valheim.pacifist.cfg`.\
@@ -21,9 +21,6 @@ vfx are Particles, sfx are sounds, ragdoll are dead bodies
 
 ## Development
 BepInEx must be setup at manual or with r2modman/Thunderstore Mod Manager.
-Jötunn must be installed.
-
-Note the master branch will always use a stable Jötunn version while others may use a directly compiled one.
 
 Create a file called `Environment.props` inside the project root.
 Copy the example and change the Valheim install path to your location.
