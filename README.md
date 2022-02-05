@@ -45,5 +45,9 @@ If you want you can use `deploy.sh` to copy all files to your Valheim install.
 - Discord: Margmas#9562
 
 ## Changelog
+0.1.1
+- Removed Jotunn dependency
+- Fixed the attack behaviour setting was making every monster attacking the player instead of only disabling it
+
 0.1.0
 - Release

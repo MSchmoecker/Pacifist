@@ -10,7 +10,7 @@ namespace Pacifist {
     public class Plugin : BaseUnityPlugin {
         public const string ModName = "Pacifist";
         public const string ModGuid = "com.maxsch.valheim.pacifist";
-        public const string ModVersion = "0.1.0";
+        public const string ModVersion = "0.1.1";
 
         public static Plugin Instance { get; private set; }
         private Harmony harmony;
