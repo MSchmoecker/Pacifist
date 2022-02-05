@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Pacifist.Logic {
     public static class EffectHandler {
         public static bool IsReloading { get; private set; }
-        public static readonly Dictionary<string, bool> AttackDisabled = new Dictionary<string, bool>();
+        public static readonly Dictionary<string, bool> AttackEnabled = new Dictionary<string, bool>();
 
         public static void ReloadEffects() {
             IsReloading = true;
@@ -36,13 +36,14 @@ namespace Pacifist.Logic {
 
         private static void CheckAttackEnabled(string prefabName, MonsterAI monsterAI) {
             bool enabled = Plugin.Instance.Config.Bind(prefabName, $"{prefabName}_attack_players", true).Value;
-            monsterAI.m_enableHuntPlayer = enabled;
-            monsterAI.m_attackPlayerObjects = enabled;
 
-            if (AttackDisabled.ContainsKey(prefabName)) {
-                AttackDisabled[prefabName] = !enabled;
+            monsterAI.m_enableHuntPlayer = monsterAI.m_enableHuntPlayer && enabled;
+            monsterAI.m_attackPlayerObjects = monsterAI.m_attackPlayerObjects && enabled;
+
+            if (AttackEnabled.ContainsKey(prefabName)) {
+                AttackEnabled[prefabName] = enabled;
             } else {
-                AttackDisabled.Add(prefabName, !enabled);
+                AttackEnabled.Add(prefabName, enabled);
             }
         }
     }

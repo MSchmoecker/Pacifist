@@ -4,11 +4,16 @@ using Pacifist.Logic;
 namespace VNEI.Patches {
     [HarmonyPatch]
     public class MonsterAIPatch {
+        [HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.Awake)), HarmonyPostfix]
+        public static void AwakePatch(MonsterAI __instance) {
+            __instance.SetHuntPlayer(__instance.m_enableHuntPlayer);
+        }
+
         [HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.UpdateTarget)), HarmonyPostfix]
-        public static void Start(MonsterAI __instance) {
+        public static void UpdateTargetPatch(MonsterAI __instance) {
             string name = __instance.name.Trim().Replace("(Clone)", "");
 
-            if (!EffectHandler.AttackDisabled.ContainsKey(name) || !EffectHandler.AttackDisabled[name]) {
+            if (!EffectHandler.AttackEnabled.ContainsKey(name) || EffectHandler.AttackEnabled[name]) {
                 return;
             }
 
